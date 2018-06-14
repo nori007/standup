@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './img/standup.logo.png';
 import './App.css';
+import Editor from './component/Editor';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    console.log(this.e);  
+  }
+
+  isAnonymous() {
+    return true;
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2> Stand Up 시작합시다. </h2>
-        </header>
-        <p className="App-intro">
-          프로젝트 시작.
-        </p>
+          <Editor {...this}/>
+        </div>
       </div>
     );
   }

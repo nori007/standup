@@ -14,4 +14,7 @@
 
 
 
- 
+## day2
+### 로고 & 파비콘
+ * https://ko.cooltext.com/Logos
+ * https://www.favicon-generator.org/
