@@ -1,7 +1,7 @@
 {
   "name": "standup",
   "version": "0.1.0",
-  "homepage": "https://nori007.github.io/standup",
+  "homepage": "https://nori007.github.io/standup/",
   "private": true,
   "dependencies": {
     "gh-pages": "^1.2.0",
