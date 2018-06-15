@@ -19,3 +19,8 @@ https://github.com/ehrudxo/standup/
 ### 로고 & 파비콘
  * https://ko.cooltext.com/Logos
  * https://www.favicon-generator.org/
+
+
+## day3
+### jest
+ * 자바스크립트 단위테스트를 도와주는 틀은 많은 것으로 알고있었는데, create-react-app에서 기본적으로 제공하는 ject를 활용한 단위테스트. 신세계였음. npm 기반으로 된 프로젝트에서 활용하면 될것으로 보임. 추가적으로 ~.spec.js 파일도 테스트 파일로아는데 같이 사용되는지 확인해 볼 것.

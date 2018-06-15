@@ -3,6 +3,9 @@ import logo from './img/standup.logo.png';
 import './App.css';
 import Editor from './component/Editor';
 
+// import myConfig from './config/firebaseConfig';
+// console.log(myConfig.apiKey);
+
 class App extends Component {
   constructor() {
     super();
