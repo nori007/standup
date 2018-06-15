@@ -1,10 +1,10 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyBRIpdSGzwmTfloaZp5wL4H3qVqULbf9LA",
-    authDomain: "standup-fb88e.firebaseapp.com",
-    databaseURL: "https://standup-fb88e.firebaseio.com",
-    projectId: "standup-fb88e",
-    storageBucket: "",
-    messagingSenderId: "1099483031938"
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASEURL,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
   };
 
   export default firebaseConfig;
