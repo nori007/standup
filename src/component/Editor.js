@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Editor.css';
 import Profile from './Profile';
+import Article from './Article';
 
 class Editor extends Component {
 
@@ -11,6 +12,7 @@ class Editor extends Component {
         this.getCard = this.getCard.bind(this);
         this.hasValue = this.hasValue.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.detectURL = this.detectURL.bind(this);
 
         this.state = {
             embedlyUrl: undefined,
@@ -30,14 +32,14 @@ class Editor extends Component {
         let checkText = this.detectURL(event.currentTarget.textContent);
         if(!this.state.embedlyUrl && (event.keyCode === 32 || event.keyCode === 13) && checkText){
             this.setState({embedlyUrl: checkText, content: event.currentTarget.textContent});
-        }else {
-            this.setstate({content:event.currentTarget.textContent});
+        }else{
+            this.setState({content: event.currentTarget.textContent});
         }
     }
 
     detectURL(text) {
         var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
-        if(urls.length > 0) return urls[0];
+        if(urls && urls.length > 0) return urls[0];
         else return undefined;
     }
 
@@ -60,7 +62,11 @@ class Editor extends Component {
     }
 
     handleSubmit(event) {
-        this.props.submit();
+        let article = Object.assign({}, Article());
+        article.user = "user1";
+        article.content = this.state.content;
+        article.urls[0].url = this.state.embedlyUrl;
+        this.props.handleSubmit(article);
     }
 
     render () {
@@ -74,7 +80,7 @@ class Editor extends Component {
                     {this.getCard(this.state.embedlyUrl)}
                 </div>
                 <div className="actionBar">
-                    <button className="upload" onClick={this.props.handleSubmit}>
+                    <button className="upload" onClick={this.handleSubmit}>
                         <span>StandUp</span>
                     </button>
                 </div>

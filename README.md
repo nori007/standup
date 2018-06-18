@@ -28,3 +28,16 @@ https://github.com/ehrudxo/standup/
  ### .env
   * REACT_APP_ 자동으로 붙여주는게 아니라 붙여주는게 규칙임. 안붙이면은 안붙인 변수로 접근하면 됨.
   * 나중에 gitignore에 추가해서 키 노출안되도록 수정. 
+
+
+## day4
+### firebase 
+ * nosql이며, 그냥 사용하면됨! 간단한 데이터 저장은 요기 이용하면 될듯.
+ * https://firebase.google.com/docs/database/?hl=ko
+ * orderByChild(), orderByKey(), orderByValue() 등 제공하는 함수 있음.
+
+### 리엑트 컴포넌트 생명주기
+ * getDefaultProps() -> getInitialState() -> componentWillMount() -> render() -> componentDidMount()
+ * getDefaultProps() / getInitialState() : this.state 값 참조 불가, this.setState() 함수 사용 불가
+ * render() : this.state 참조 가능 하나 this.setState() 사용 불가
+

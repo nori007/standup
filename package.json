@@ -4,6 +4,7 @@
   "homepage": "https://nori007.github.io/standup/",
   "private": true,
   "dependencies": {
+    "firebase": "^5.0.4",
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
