@@ -27,3 +27,4 @@ https://github.com/ehrudxo/standup/
 
  ### .env
   * REACT_APP_ 자동으로 붙여주는게 아니라 붙여주는게 규칙임. 안붙이면은 안붙인 변수로 접근하면 됨.
+  * 나중에 gitignore에 추가해서 키 노출안되도록 수정. 
