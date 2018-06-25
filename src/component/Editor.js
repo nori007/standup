@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './Editor.css';
 import Profile from './Profile';
 import Article from './Article';
+import Card from './Card'
+import getEmbedly from './EmbedlyDao'
 
 class Editor extends Component {
 
@@ -9,16 +11,44 @@ class Editor extends Component {
         super(props);
         this.onPaste = this.onPaste.bind(this);
         this.editorChange = this.editorChange.bind(this);
-        this.getCard = this.getCard.bind(this);
         this.hasValue = this.hasValue.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.detectURL = this.detectURL.bind(this);
+        this.getArticle = this.getArticle.bind(this);
+        this.getForcedState = this.getForcedState.bind(this);
 
         this.state = {
             embedlyUrl: undefined,
-            content: undefined
+            content: undefined,
+            cardInfo: undefined
         }
     }
+
+    getForcedState(embedlyUrl, content) {
+        return new Promise(resolve => {
+            if(embedlyUrl) {
+                getEmbedly(embedlyUrl).then (response => {
+                    resolve({
+                        embedlyUrl: embedlyUrl,
+                        content: content,
+                        cardInfo: response
+                    });
+                }).catch(error => {
+                    resolve({
+                        embedlyUrl: undefined,
+                        content: undefined,
+                        cardInfo: undefined
+                    });
+                })
+            }
+            else {
+                resolve({
+                    content: content
+                });
+            }
+        })
+    }
+
 
     onPaste(event) {
         event.clipboardData.items[0].getAsString(text=>{
@@ -31,10 +61,25 @@ class Editor extends Component {
     editorChange(event) {
         let checkText = this.detectURL(event.currentTarget.textContent);
         if(!this.state.embedlyUrl && (event.keyCode === 32 || event.keyCode === 13) && checkText){
-            this.setState({embedlyUrl: checkText, content: event.currentTarget.textContent});
+            this.getForcedState(checkText, event.currentTarget.textContent).then((obj => {
+                this.setState(obj);
+            }))
         }else{
-            this.setState({content: event.currentTarget.textContent});
+            this.getForcedState(undefined, event.currentTarget.textContent).then((obj => {
+                this.setState(obj);
+            }))
         }
+    }
+
+    getArticle() {
+        let article = {};
+        article.user = "user1";
+        article.content = this.state.content;
+        if(this.state.embedlyUrl) {
+            article.ardInfo = this.state.cardInfo;
+        }
+
+        return article;
     }
 
     detectURL(text) {
@@ -77,7 +122,7 @@ class Editor extends Component {
                 <div className="textEditor">
                     <div className="innerEdit" contentEditable="true" placeholder="write.." onPaste={this.onPaste} onKeyUp={this.editorChange}>
                     </div>
-                    {this.getCard(this.state.embedlyUrl)}
+                    <Card cardInfo = {this.state.cardInfo} />
                 </div>
                 <div className="actionBar">
                     <button className="upload" onClick={this.handleSubmit}>

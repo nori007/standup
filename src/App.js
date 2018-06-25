@@ -4,6 +4,7 @@ import './App.css';
 import Editor from './component/Editor';
 import FireBaseDao from './component/FirebaseDao';
 import FirebaseConfig from './config/firebaseConfig';
+import CardList from './component/CardList'
 
 // import myConfig from './config/firebaseConfig';
 // console.log(myConfig.apiKey);
@@ -15,7 +16,6 @@ class App extends Component {
     this.dao = new FireBaseDao(FirebaseConfig);
     this.submit = this.submit.bind(this);
     this.getArticles = this.getArticles.bind(this);
-    
     this.state = {
       articles: []
     }
@@ -75,7 +75,7 @@ class App extends Component {
         </div>
         <Editor handleSubmit={this.submit} isAnonymous={this.isAnonymous}/>
         <ul>
-          {this.getArticles()}
+          <CardList articles={this.state.articles}/>
         </ul>
       </div>
     );

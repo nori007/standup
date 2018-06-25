@@ -41,3 +41,12 @@ https://github.com/ehrudxo/standup/
  * getDefaultProps() / getInitialState() : this.state 값 참조 불가, this.setState() 함수 사용 불가
  * render() : this.state 참조 가능 하나 this.setState() 사용 불가
 
+
+## day5
+### 추가 기능
+ * thumbnail 이미지가 없을경우 이미지 없음 기본이미지 출력
+
+### embed.ly
+ * 돈이...! 빼고 진행.
+
+ 
